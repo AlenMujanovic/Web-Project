@@ -1,0 +1,15 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+
+<h1>{{ auction.title|escape }}</h1>
+<p>{{ auction.description}}</p>
+<p>Pocetna cena:{{ lastOfferPrice}} EUR</p>
+<p>Datum pocetka:{{ auction.starts_at|date('j. n. Y')}}</p>
+<p>Datum kraja:{{ auction.ends_at|date('j. n. Y')}}</p>
+{% endblock %}
+
+{% block naslov %}
+{{category.name|escape}}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+
+<h1>{{ category.name|escape }}</h1>
+<p>Spisak aukcija u ovoj kategoriji je:</p>
+<ul>
+    {% for auction in auctionsInCategory %}
+    <li>
+        <a href="/auction/{{ auction.auction_id}}">
+            {{auction.title|escape}}
+        </a><br>
+        {{auction.description|escape}}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block naslov %}
+{{category.name|escape}}
+{% endblock %}
