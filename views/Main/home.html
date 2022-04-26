@@ -2,16 +2,13 @@
 
 {% block main %}
 {% apply spaceless %}
-<nav>
-    <ul>
-        {% for category in categories %}
-        <li>
-            <a href="/category/{{ category.category_id }}">
-                {{ category.name|escape }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</nav>
+<p>{{ podatak }}</p>
+<div class="categories">
+    {% for category in categories %}
+    <a href="{{ BASE }}category/{{ category.category_id }}" class="category">
+        {{ category.name|escape }}
+    </a>
+    {% endfor %}
+</div>
 {% endapply %}
 {% endblock %}

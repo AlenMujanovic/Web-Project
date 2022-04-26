@@ -2,16 +2,23 @@
 
 {% block main %}
 
-
-<h1>{{ category.name|escape }}</h1>
-<p>Spisak aukcija u ovoj kategoriji je:</p>
 <ul>
     {% for auction in auctionsInCategory %}
-    <li>
-        <a href="/auction/{{ auction.auction_id}}">
+    <li class="auction">
+        <a href="{{ BASE }}auction/{{ auction.auction_id}}" class="auction-title">
             {{auction.title|escape}}
-        </a><br>
-        {{auction.description|escape}}
+        </a>
+
+        <span class="auction-date1">{{auction.starts_at|escape}}</span>
+        <span class="auction-date2">{{auction.ends_at|escape}}</span>
+        <span class="auction-price">{{auction.last_offer_price|escape}}</span>
+
+        <a href="{{ BASE }}auction/{{ auction.auction_id}}" class="auction-big-image">
+            <img src="{{BASE}}assets/uploads/{{auction.auction_id}}.jpg" alt="Velika slika - {{auction.auction_id}}">
+        </a>
+
+        <img src="#" alt="Mala slika 1 - {{auction.auction_id}}" class="auction-small-image image-1">
+        <img src="#" alt="Mala slika 2 - {{auction.auction_id}}" class="auction-small-image image-2">
     </li>
     {% endfor %}
 </ul>

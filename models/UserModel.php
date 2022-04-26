@@ -3,56 +3,30 @@
 namespace App\Models;
 
 use App\Core\DatabaseConnection;
+use App\Core\Model;
+use App\Core\Field;
 
-class UserModel
+class UserModel extends Model
 {
-    private $dbc;
 
-    public function __construct(DatabaseConnection &$dbc)
+    protected function getFields(): array
     {
-        $this->dbc = $dbc;
-    }
+        return [
+            'user_id'         => new Field((new \App\Validators\NumberValidator())->setIntegerLength(11), false),
+            'created_at'      => new Field((new \App\Validators\DateTimeValidator())->allowDate()->allowTime(), false),
 
-    public function getById(int $userId)
-    {
-        $sql = 'SELECT * FROM user WHERE user_id = ?;';
-        $prep = $this->dbc->getConnection()->prepare($sql);
-        $res = $prep->execute([$userId]);
-        $user = NULL;
-
-        if ($res) {
-            $user = $prep->fetch(\PDO::FETCH_OBJ);
-        }
-
-        return $user;
-    }
-
-    public function getAll(): array
-    {
-        $sql = 'SELECT * FROM user;';
-        $prep = $this->dbc->getConnection()->prepare($sql);
-        $res = $prep->execute();
-        $users = [];
-
-        if ($res) {
-            $users = $prep->fetchAll(\PDO::FETCH_OBJ);
-        }
-
-        return $users;
+            'username'        => new Field((new \App\Validators\StringValidator(0, 64))),
+            'password_hash'   => new Field((new \App\Validators\StringValidator(0, 128))),
+            'email'           => new Field((new \App\Validators\StringValidator(0, 255))),
+            'forename'        => new Field((new \App\Validators\StringValidator(0, 64))),
+            'surname'         => new Field((new \App\Validators\StringValidator(0, 64))),
+            'is_active'       => new Field((new \App\Validators\BitValidator()))
+        ];
     }
 
 
     public function getByUsername(string $username)
     {
-        $sql = 'SELECT * FROM user WHERE username = ?;';
-        $prep = $this->dbc->getConnection()->prepare($sql);
-        $res = $prep->execute([$username]);
-        $user = NULL;
-
-        if ($res) {
-            $user = $prep->fetch(\PDO::FETCH_OBJ);
-        }
-
-        return $user;
+        return $this->getByFieldName('username', $username);
     }
 }

@@ -21,6 +21,10 @@ class ComposerStaticInitac69a61676e731c7ad2408ea255a1c83
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -40,9 +44,23 @@ class ComposerStaticInitac69a61676e731c7ad2408ea255a1c83
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'Upload' => 
+            array (
+                0 => __DIR__ . '/..' . '/codeguy/upload/src',
+            ),
         ),
     );
 
@@ -55,6 +73,7 @@ class ComposerStaticInitac69a61676e731c7ad2408ea255a1c83
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitac69a61676e731c7ad2408ea255a1c83::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitac69a61676e731c7ad2408ea255a1c83::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitac69a61676e731c7ad2408ea255a1c83::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitac69a61676e731c7ad2408ea255a1c83::$classMap;
 
         }, null, ClassLoader::class);

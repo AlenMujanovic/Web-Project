@@ -2,42 +2,16 @@
 
 namespace App\Models;
 
-use App\Core\DatabaseConnection;
+use App\Core\Model;
+use App\Core\Field;
 
-class CategoryModel
+class CategoryModel extends Model
 {
-    private $dbc;
-
-    public function __construct(DatabaseConnection &$dbc)
+    protected function getFields(): array
     {
-        $this->dbc = $dbc;
-    }
-
-    public function getById(int $categoryId)
-    {
-        $sql = 'SELECT * FROM category WHERE category_id = ?;';
-        $prep = $this->dbc->getConnection()->prepare($sql);
-        $res = $prep->execute([$categoryId]);
-        $category = NULL;
-
-        if ($res) {
-            $category = $prep->fetch(\PDO::FETCH_OBJ);
-        }
-
-        return $category;
-    }
-
-    public function getAll(): array
-    {
-        $sql = 'SELECT * FROM category;';
-        $prep = $this->dbc->getConnection()->prepare($sql);
-        $res = $prep->execute();
-        $categorys = [];
-
-        if ($res) {
-            $categorys = $prep->fetchAll(\PDO::FETCH_OBJ);
-        }
-
-        return $categorys;
+        return [
+            'category_id'     => new Field((new \App\Validators\NumberValidator())->setIntegerLength(11), false),
+            'name'            => new Field((new \App\Validators\StringValidator(0, 64)))
+        ];
     }
 }

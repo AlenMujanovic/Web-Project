@@ -1,0 +1,166 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    margin: 0 auto;
+    max-width: 1100px;
+    width: 1100px;
+}
+
+.site-header{
+    display: grid;
+    grid-template-areas:  "banner social"
+                            "banner search"
+                            "menu menu";
+}
+
+.banners{
+    grid-area: banner;
+    background-color: chocolate;
+}
+
+
+.social-icons{
+    grid-area: social;
+    text-align: right;
+}
+
+.social-icons a i.fa{
+    color: #dc0004;
+    font-size: 18pt;
+    margin: 5px;
+    display: inline-block;
+}
+
+/* .social-icons  img{
+    margin: 0px 10px;
+    height: 16px;
+    width: 16px;
+} */
+
+.search-box{
+    grid-area: search;
+    text-align: right;
+}
+
+#main-menu{
+    grid-area: menu;
+
+}
+
+#main-menu > ul{
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+} 
+
+
+#main-menu > ul >li{
+    flex-grow: 1;
+    text-align: center;
+}
+
+#main-menu > ul >li > a{
+    text-decoration: none;
+    padding: 10px 0px;
+    display: block;
+    color: black;
+}
+
+#main-menu > ul >li:hover{
+background: rgba(200, 200, 200, 0.3);
+}
+
+.categories{
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    flex-wrap: wrap;
+}
+
+.category{
+    width: 50%;
+    text-align: center;
+    padding: 50px 100px;
+    border: 1px solid #ccc;
+    background: rgba(200, 200, 200, 0.2);
+}
+
+.category:hover{
+    border: 1px solid #000;
+    background: rgba(200, 200, 200, 0.6);
+}
+
+
+.site-footer{
+    text-align: center;
+    margin-top:40px ;
+}
+
+.auction{
+    display: grid;
+    grid-template-areas:    "big-image big-image small-image-1 title title title "
+                            "big-image big-image small-image-2 date1 date2 price ";
+    grid-template-columns: 120px 0px 80px auto;
+    border-bottom: 1px solid #444;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+
+}
+
+.auction > .auction-title{
+    grid-area: title;
+    border: 1px dashed #ccc;
+}
+
+.auction > .auction-date1{
+    grid-area: date1;
+    border: 1px dashed #ccc;
+    text-align: center;
+}
+
+.auction > .auction-date2{
+    grid-area: date2;
+    border: 1px dashed #ccc;
+    text-align: center;
+}
+
+.auction > .auction-price{
+    grid-area: price;
+    border: 1px dashed #ccc;
+    text-align: right;
+}
+
+.auction > .auction-big-image{
+    grid-area: big-image;
+    border: 1px dashed #ccc;
+    height: 100px;
+    width: 120px;
+}
+
+.auction > .image-1{
+    grid-area: small-image-1;
+    border: 1px dashed #ccc;
+    width: 80px;
+}
+
+.auction > .image-2{
+    grid-area:small-image-2;
+    border: 1px dashed #ccc;
+    width: 80px;
+}
+
+.bookmarks{
+    position: fixed;
+    display: block;
+    
+    top: 50px;
+    right: 0px;
+    border: 1px solid black;
+    background: #fefefe;
+}

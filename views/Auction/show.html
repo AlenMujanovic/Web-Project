@@ -2,10 +2,11 @@
 
 {% block main %}
 
+<a href="#" onclick="addBookmarks({{auction.auction_id}});">Add to bookmark</a>
 
 <h1>{{ auction.title|escape }}</h1>
 <p>{{ auction.description}}</p>
-<p>Pocetna cena:{{ lastOfferPrice}} EUR</p>
+<p>Trenutna cena:{{ lastOfferPrice}} EUR</p>
 <p>Datum pocetka:{{ auction.starts_at|date('j. n. Y')}}</p>
 <p>Datum kraja:{{ auction.ends_at|date('j. n. Y')}}</p>
 {% endblock %}
