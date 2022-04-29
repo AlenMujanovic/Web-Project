@@ -3,12 +3,27 @@
 {% block main %}
 {% apply spaceless %}
 
-<div>
+<div class="dashboard">
+    <p>Dashboard</p>
+
     <a href="{{ BASE }}user/auctions">
         <i class="fa fa-list"></i> List my auctions
     </a>
 
+    <a href="{{ BASE }}user/auctions/add">
+        <i class="fa fa-plus"></i> Add new auction
+    </a>
+
+    <a href="{{ BASE }}user/categories">
+        <i class="fa fa-list"></i> List all categories
+    </a>
+
+    <a href="{{ BASE }}user/categories/add">
+        <i class="fa fa-plus"></i> Add new category
+    </a>
+
 </div>
+
 
 {% endapply %}
 {% endblock %}

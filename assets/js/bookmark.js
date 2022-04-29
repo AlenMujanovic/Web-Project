@@ -1,12 +1,12 @@
 function getBookmarks() {
-    fetch(BASE + "api/bookmarks/", { credentials: "include" })
+    fetch(BASE + "api/bookmarks", { credentials: "include" })
         .then((result) => result.json())
         .then((data) => {
-            displayBookmarks(data.bookmarks);
+            displayBookmarks(data.bookmarks, data.usernameFetch);
         });
 }
 
-function addBookmarks(auctionId) {
+function addBookmark(auctionId) {
     fetch(BASE + "api/bookmarks/add/" + auctionId, { credentials: "include" })
         .then((result) => result.json())
         .then((data) => {
@@ -16,8 +16,8 @@ function addBookmarks(auctionId) {
         });
 }
 
-function clearBookmarks(auctionId) {
-    fetch(BASE + "api/bookmarks/clear/", { credentials: "include" })
+function clearBookmarks() {
+    fetch(BASE + "api/bookmarks/clear", { credentials: "include" })
         .then((result) => result.json())
         .then((data) => {
             if (data.error === 0) {
@@ -26,11 +26,20 @@ function clearBookmarks(auctionId) {
         });
 }
 
-function displayBookmarks(bookmarks) {
+function displayBookmarks(bookmarks, usernameFetch) {
+    const usernameDiv = document.querySelector(".userFetch");
+    usernameDiv.innerHTML = "";
+
+    if (!usernameFetch) {
+        usernameDiv.innerHTML = "You are loged out!";
+    } else {
+        usernameDiv.innerHTML = "Welcome " + usernameFetch + "!";
+    }
+
     const bookmarksDiv = document.querySelector(".bookmarks");
     bookmarksDiv.innerHTML = "";
 
-    if (bookmarks.lenght === 0) {
+    if (bookmarks.length === 0) {
         bookmarksDiv.innerHTML = "No bookmarks!";
         return;
     }
@@ -39,7 +48,7 @@ function displayBookmarks(bookmarks) {
         const bookmarkLink = document.createElement("a");
         bookmarkLink.style.display = "block";
         bookmarkLink.innerHTML = bookmark.title;
-        bookmarkLink.href = "auction/" + bookmark.auction_id;
+        bookmarkLink.href = BASE + "auction/" + bookmark.auction_id;
 
         bookmarksDiv.appendChild(bookmarkLink);
     }

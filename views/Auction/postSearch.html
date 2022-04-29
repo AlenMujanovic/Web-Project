@@ -14,11 +14,11 @@
         <span class="auction-price">{{auction.starting_price|escape}}</span>
 
         <a href="{{ BASE }}auction/{{ auction.auction_id}}" class="auction-big-image">
-            <img src="#" alt="Velika slika - {{auction.auction_id}}">
+            <img src="{{ BASE }}assets/uploads/{{auction.image_path}}" alt="Velika slika - {{auction.auction_id}}">
         </a>
 
-        <img src="#" alt="Mala slika 1 - {{auction.auction_id}}" class="auction-small-image image-1">
-        <img src="#" alt="Mala slika 2 - {{auction.auction_id}}" class="auction-small-image image-2">
+        <!-- <img src="#" alt="Mala slika 1 - {{auction.auction_id}}" class="auction-small-image image-1">
+        <img src="#" alt="Mala slika 2 - {{auction.auction_id}}" class="auction-small-image image-2"> -->
     </li>
     {% endfor %}
 </ul>

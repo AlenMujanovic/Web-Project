@@ -2,7 +2,24 @@
 
 {% block main %}
 
-<form action="{{ BASE }}user/login" method="POST">
+<div class="loginBox">
+    <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
+    <h3>Sign in here</h3>
+    <form action="{{ BASE }}user/login" method="POST">
+        <div class="inputBox">
+            <input id="input_username" type="text" name="login_username" placeholder="Username" required>
+            <input id="input_password" type="password" name="login_password" placeholder="Password" required>
+        </div>
+        <input type="submit" name="" value="Login">
+    </form>
+    <div class="text-center">
+        <p>Don't have an account? <a href="{{ BASE }}user/register">Sign up</a></p>
+    </div>
+</div>
+
+
+
+<!-- <form action="{{ BASE }}user/login" method="POST">
 
     <div>
         <label for="input_username">Username:</label>
@@ -14,6 +31,8 @@
         <input type="password" id="input_password" name="login_password" required placeholder="Enter your password...">
     </div>
 
+    <p>Don't have an account? <a href="{{ BASE }}user/register">Sign up</a></p>
+
     <div>
         <button type="submit">
             Log in
@@ -21,6 +40,6 @@
     </div>
 
 
-</form>
+</form> -->
 
 {% endblock %}

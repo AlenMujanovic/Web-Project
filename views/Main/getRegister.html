@@ -2,7 +2,30 @@
 
 {% block main %}
 
-<form action="{{ BASE }}user/register" method="POST">
+
+<div class="registerBox">
+    <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
+    <h3>Sign up here</h3>
+    <form action="{{ BASE }}user/register" method="POST">
+        <div class="inputBoxR">
+            <input type="text" id="input_forename" name="reg_forename" required placeholder="Forename">
+            <input type="text" id="input_surname" name="reg_surname" required placeholder="Surname">
+            <input id="input_email" type="email" name="reg_email" required placeholder="Email">
+            <input id="input_username" type="text" name="reg_username" placeholder="Username" required>
+            <input id="input_password" type="password" name="reg_password_1" placeholder="Password" required>
+            <input type="password" id="input_password_2" name="reg_password_2" required placeholder="Repeat password">
+        </div>
+        <input type="submit" name="" value="Sign up">
+    </form>
+    <div class="text-center">
+        <p>Have an account already?<a href="{{ BASE }}user/login">Sign in</a></p>
+    </div>
+</div>
+
+
+
+
+<!-- <form action="{{ BASE }}user/register" method="POST">
 
     <div>
         <label for="input_email">E-mail:</label>
@@ -42,7 +65,9 @@
         </button>
     </div>
 
+    <p>Have an account already?<a href="{{ BASE }}user/login">Log in</a></p>
 
-</form>
+
+</form> -->
 
 {% endblock %}

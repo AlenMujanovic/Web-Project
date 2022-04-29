@@ -4,17 +4,16 @@
 <div>
     <div class="options">
         <a href="{{ BASE }}user/categories">List all categories</a>
-        <a href="{{ BASE }}user/categories/add">Add new category</a>
     </div>
 
     <form class="category-form" method="POST">
-        <div>
+        <div class="form-group">
             <label for="name">Name: </label>
-            <input type="text" id="name" name="name" value="{{ category.name|escape }}">
+            <input type="text" id="name" name="name" value="{{ category.name|escape }}" class="form-control">
         </div>
 
-        <div>
-            <button type="submit">
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">
                 Edit category
             </button>
         </div>

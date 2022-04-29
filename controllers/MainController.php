@@ -84,11 +84,14 @@ class MainController extends \App\Core\Controller
 
     public function getLogin()
     {
+        $userId = $this->getSession()->get('user_id');
+        if ($userId) {
+            $this->redirect(\Configuration::BASE . 'user/profile');
+        }
     }
 
     public function postLogin()
     {
-
         $username  = \filter_input(INPUT_POST, 'login_username', FILTER_SANITIZE_STRING);
         $password  = \filter_input(INPUT_POST, 'login_password', FILTER_SANITIZE_STRING);
 
@@ -120,5 +123,12 @@ class MainController extends \App\Core\Controller
         $this->getSession()->save();
 
         $this->redirect(\Configuration::BASE . '/user/profile');
+    }
+
+    public function getLogout()
+    {
+        $this->getSession()->remove('user_id');
+        $this->getSession()->save();
+        $this->redirect(\Configuration::BASE);
     }
 }

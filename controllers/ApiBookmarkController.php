@@ -2,17 +2,29 @@
 
 namespace App\Controllers;
 
-use App\Core\ApiController;
+use App\Models\UserModel;
 
-class ApiBookmarkController extends ApiController
+class ApiBookmarkController extends \App\Core\ApiController
 {
     public function getBookmarks()
     {
+        $userId = $this->getSession()->get('user_id');
+
+        if ($userId) {
+            $userModel = new UserModel($this->getDatabaseConnection());
+            $user = $userModel->getById($userId);
+            $usernameFetch = $user->username;
+        }
+
         $bookmarks = $this->getSession()->get('bookmarks', []);
+        $this->set('usernameFetch', $usernameFetch);
         $this->set('bookmarks', $bookmarks);
+
+        // print_r([$usernameFetch, $bookmarks]);
+        // exit;
     }
 
-    public function addBookmarks($auctionId)
+    public function addBookmark($auctionId)
     {
         $auctionModel = new \App\Models\AuctionModel($this->getDatabaseConnection());
         $auction = $auctionModel->getById($auctionId);
@@ -40,6 +52,7 @@ class ApiBookmarkController extends ApiController
     public function clear()
     {
         $this->getSession()->put('bookmarks', []);
+
         $this->set('error', 0);
     }
 }

@@ -25,6 +25,10 @@ class ComposerStaticInitac69a61676e731c7ad2408ea255a1c83
         array (
             'PHPMailer\\PHPMailer\\' => 20,
         ),
+        'G' => 
+        array (
+            'Gumlet\\' => 7,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -47,6 +51,10 @@ class ComposerStaticInitac69a61676e731c7ad2408ea255a1c83
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'Gumlet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gumlet/php-image-resize/lib',
         ),
         'App\\' => 
         array (

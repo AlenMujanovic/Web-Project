@@ -30,7 +30,7 @@ class AuctionModel extends Model
             'is_active'       => new Field(new BitValidator()),
             'category_id'     => new Field((new NumberValidator())->setIntegerLength(11)),
             'user_id'         => new Field((new NumberValidator())->setIntegerLength(11)),
-            // 'image_path'      => new Field((new StringValidator())->setMaxLength(255))
+            'image_path'      => new Field((new StringValidator())->setMaxLength(255))
         ];
     }
 

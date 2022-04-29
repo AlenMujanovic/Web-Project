@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Auction house - {% block naslov %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="{{ BASE }}assets/libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ BASE }}assets/libs/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ BASE }}assets/css/main.css">
 </head>
@@ -12,7 +13,7 @@
     <header class="site-header">
         <div class="banners">
             <a href="{{ BASE }}" class="banner">
-                <img src="{{ BASE }}assets/img/banner-1.jpg" alt="banner">
+                <img src="{{ BASE }}assets/uploads/banner.jpg" alt="banner">
             </a>
         </div>
         <div class="social-icons">
@@ -20,22 +21,37 @@
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-youtube"></i></a>
+            <div class="dot"></div>
         </div>
+
         <div class="search-box">
-            <form action="{{ BASE }}search" method="post">
-                <input type="text" name="q" placeholder="Type something..." required pattern="[^\s]{2,}">
-                <button type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
+            <form method="post" action="{{ BASE }}search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." required
+                            pattern="[^\s]{2,}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
+
+
+
         <nav id="main-menu">
             <ul>
                 <li> <a href="{{ BASE }}"><i class="fa fa-home"></i>Home</a></li>
                 <li> <a href="{{ BASE }}categories"><i class="fa fa-list-alt"></i>Categories</a></li>
-                <li> <a href="{{ BASE }}profile"><i class="fa fa-user"></i>Profile</a></li>
-                <li> <a href="{{ BASE }}contact"><i class="fa fa-phone"></i>Contact</a></li>
-                <li> <a href="{{ BASE }}log-out"><i class="fa fa-sign-out"></i>Log-Out</a></li>
+                <li> <a href="{{ BASE }}user/login"><i class="fa fa-user"></i>Profile</a></li>
+                <li> <a href="{{ BASE }}user/register"><i class="fa fa-user-plus"></i>Register</a></li>
+                <li> <a href="{{ BASE }}user/logout"><i class="fa fa-sign-out"></i>Log-Out</a></li>
+
+
+
             </ul>
         </nav>
     </header>
@@ -44,16 +60,25 @@
         {% endblock %}
     </main>
 
-    <div class="bookmarks">
-        Loading bookmarks...
+    <div class="card bookmark-card">
+        <div class="bookmarks card-body">
+            Please wait, loading bookmarks...
+        </div>
+
+        <div class="userFetch">
+
+        </div>
     </div>
 
-    <footer class="site-footer">
+    <footer class="site-footer text-center">
         &copy; 2022 Alen Mujanovic - Auction house
     </footer>
 
     <script>const BASE = '{{ BASE }}';</script>
+    <script src="{{ BASE }}assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="{{ BASE }}assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{ BASE }}assets/js/bookmark.js"></script>
+    <script src="{{ BASE }}assets/js/offer.js"></script>
 </body>
 
 </html>

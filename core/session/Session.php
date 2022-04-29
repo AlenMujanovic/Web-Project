@@ -2,8 +2,6 @@
 
 namespace App\Core\Session;
 
-use App\Core\Fingerprint\FingerprintProvider;
-
 final class Session
 {
     private $sessionStorage;
@@ -15,7 +13,7 @@ final class Session
     public function __construct(SessionStorage $sessionStorage, int $sessionLife = 1800)
     {
         $this->sessionStorage = $sessionStorage;
-        $this->sessionData = (object)[];
+        $this->sessionData = (object) [];
         $this->sessionLife = $sessionLife;
         $this->fingerprintProvider = null;
 
@@ -28,7 +26,7 @@ final class Session
         }
     }
 
-    public function setFingerprintProvider(FingerprintProvider $fp)
+    public function setFingerprintProvider(\App\Core\Fingerprint\FingerprintProvider $fp)
     {
         $this->fingerprintProvider = $fp;
     }
@@ -53,9 +51,16 @@ final class Session
         return $this->sessionData->$key ?? $defaultValue;
     }
 
+    public function remove(string $key)
+    {
+        if ($this->exists($key)) {
+            unset($this->sessionData->$key);
+        }
+    }
+
     public function clear()
     {
-        $this->sessionData = [];
+        $this->sessionData = (object) [];
     }
 
     public function exists(string $key): bool
@@ -88,7 +93,7 @@ final class Session
         $restoredData = \json_decode($jsonData);
 
         if (!$restoredData) {
-            $this->sessionData = (object)[];
+            $this->sessionData = (object) [];
             return;
         }
 
@@ -99,7 +104,6 @@ final class Session
         }
 
         $savedFingerprint = $this->sessionData->__fingerprint ?? null;
-
         if ($savedFingerprint === null) {
             return;
         }
@@ -118,7 +122,6 @@ final class Session
     public function regenerate()
     {
         $this->reload();
-
         $this->sessionStorage->delete($this->sessionId);
         $this->sessionId = $this->generateSessionId();
         $this->save();

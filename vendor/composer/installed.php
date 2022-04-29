@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'df6d83c2566ade7a668362c4d24b23330d5fbd96',
+        'reference' => 'f58965a0434857eda919c155d3d703aeaf7004b4',
         'name' => 'alen/web_project',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'df6d83c2566ade7a668362c4d24b23330d5fbd96',
+            'reference' => 'f58965a0434857eda919c155d3d703aeaf7004b4',
             'dev_requirement' => false,
         ),
         'codeguy/upload' => array(
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../codeguy/upload',
             'aliases' => array(),
             'reference' => '6a9e5e1fb58d65346d0e557db2d46fb25efd3e37',
+            'dev_requirement' => false,
+        ),
+        'gumlet/php-image-resize' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../gumlet/php-image-resize',
+            'aliases' => array(),
+            'reference' => '5ef461c53241933a3e14e4582a9d2884b8261213',
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(

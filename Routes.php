@@ -4,6 +4,7 @@ return [
     App\Core\Route::post('|^user/register/?$|',                 'Main',             'postRegister'),
     App\Core\Route::get('|^user/login/?$|',                     'Main',             'getLogin'),
     App\Core\Route::post('|^user/login/?$|',                    'Main',             'postLogin'),
+    App\Core\Route::get('|^user/logout/?$|',                    'Main',             'getLogout'),
 
 
 
@@ -13,13 +14,16 @@ return [
     App\Core\Route::get('|^auction/([0-9]+)/?$|',               'Auction',          'show'),
     App\Core\Route::post('|^search/?$|',                        'Auction',          'postSearch'),
 
+    App\Core\Route::get('|^handle/([a-z]+)/?$|',                'EventHandler',           'handle'),
 
+    # API rute:
+    App\Core\Route::get('|^api/auction/([0-9]+)/?$|',           'ApiAuction',             'show'),
+    App\Core\Route::get('|^api/bookmarks/?$|',                  'ApiBookmark',            'getBookmarks'),
+    App\Core\Route::get('|^api/bookmarks/add/([0-9]+)/?$|',     'ApiBookmark',            'addBookmark'),
+    App\Core\Route::get('|^api/bookmarks/clear/?$|',            'ApiBookmark',            'clear'),
 
-    #Api routes:
-    App\Core\Route::get('|^api/auction/([0-9]+)/?$|',           'ApiAuction',       'show'),
-    App\Core\Route::get('|^api/bookmarks/?$|',                  'ApiBookmark',      'getBookmarks'),
-    App\Core\Route::get('|^api/bookmarks/add/([0-9]+)?$|',      'ApiBookmark',      'addBookmarks'),
-    App\Core\Route::get('|^api/bookmarks/clear/?$|',            'ApiBookmark',      'clear'),
+    # User API routes:
+    App\Core\Route::post('|^api/offer/make/?|',                 'ApiUserOffer',           'postMakeOffer'),
 
     #User role routes:
     App\Core\Route::get('|^user/profile/?$|',                   'UserDashboard',          'index'),

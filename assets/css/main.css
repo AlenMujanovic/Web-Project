@@ -1,25 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
 *{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    -webkit-box-sizing: border-box;
 }
 
 body{
     margin: 0 auto;
     max-width: 1100px;
     width: 1100px;
+    /* border: 1px solid black; */
+    font-family: "Montserrat", sans-serif;
+
+    
+    
 }
 
-.site-header{
+
+
+.site-header{   
     display: grid;
-    grid-template-areas:  "banner social"
+    grid-template-areas:    "banner social"
                             "banner search"
                             "menu menu";
 }
 
 .banners{
     grid-area: banner;
-    background-color: chocolate;
+}
+
+.banners > .banner > img{
+    width: 120px;
+    height: 100px;
 }
 
 
@@ -29,7 +43,7 @@ body{
 }
 
 .social-icons a i.fa{
-    color: #dc0004;
+    color: #0d6efd;
     font-size: 18pt;
     margin: 5px;
     display: inline-block;
@@ -41,15 +55,20 @@ body{
     width: 16px;
 } */
 
+
+
 .search-box{
     grid-area: search;
-    text-align: right;
+    
+
 }
 
 #main-menu{
     grid-area: menu;
-
+    
 }
+
+
 
 #main-menu > ul{
     list-style: none;
@@ -57,12 +76,20 @@ body{
     flex-direction: row;
     align-items: stretch;
     align-content: stretch;
+    padding-left: 0;
+    border-bottom: 1px solid;
+    border-image:
+    linear-gradient(#ff512f,
+        #dd2476,
+        #1c64ff) 1;
+        animation: rotate 2.5s ease-in infinite;
 } 
 
 
 #main-menu > ul >li{
     flex-grow: 1;
     text-align: center;
+    
 }
 
 #main-menu > ul >li > a{
@@ -70,6 +97,13 @@ body{
     padding: 10px 0px;
     display: block;
     color: black;
+
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#main-menu a:hover {
+    color: #0d6efd;
 }
 
 #main-menu > ul >li:hover{
@@ -81,14 +115,34 @@ background: rgba(200, 200, 200, 0.3);
     flex-direction: row;
     align-content: stretch;
     flex-wrap: wrap;
+
+    
 }
 
 .category{
     width: 50%;
     text-align: center;
     padding: 50px 100px;
-    border: 1px solid #ccc;
-    background: rgba(200, 200, 200, 0.2);
+    text-decoration: none;
+    /* border: 1px solid #ccc; */
+    /* background: rgba(200, 200, 200, 0.2); */
+    border: 3px solid;
+    margin-top: 1px;
+    border-image:
+        linear-gradient(#ff512f,
+            #dd2476,
+            #1c64ff) 1;
+    animation: rotate 2.5s ease-in infinite;
+}
+
+@keyframes rotate {
+    50% {
+        border-image:
+            linear-gradient(360deg,
+                #ff512f,
+                #dd2476,
+                #1c64ff) 1;
+    }
 }
 
 .category:hover{
@@ -104,58 +158,58 @@ background: rgba(200, 200, 200, 0.3);
 
 .auction{
     display: grid;
-    grid-template-areas:    "big-image big-image small-image-1 title title title "
-                            "big-image big-image small-image-2 date1 date2 price ";
-    grid-template-columns: 120px 0px 80px auto;
+    grid-template-areas:    "big-image big-image title title title "
+                            "big-image big-image date1 date2 price ";
+    grid-template-columns: 150px 10px 95px auto;
     border-bottom: 1px solid #444;
     margin-bottom: 5px;
     padding-bottom: 5px;
-
 }
 
 .auction > .auction-title{
     grid-area: title;
-    border: 1px dashed #ccc;
+    /* border: 1px dashed #ccc; */
 }
 
 .auction > .auction-date1{
     grid-area: date1;
-    border: 1px dashed #ccc;
-    text-align: center;
+    /* border: 1px dashed #ccc; */
+    text-align: right;
+    width: 200px;
 }
 
 .auction > .auction-date2{
     grid-area: date2;
-    border: 1px dashed #ccc;
-    text-align: center;
+    /* border: 1px dashed #ccc; */
+    text-align: right;
 }
 
 .auction > .auction-price{
     grid-area: price;
-    border: 1px dashed #ccc;
+    /* border: 1px dashed #ccc; */
     text-align: right;
 }
 
 .auction > .auction-big-image{
     grid-area: big-image;
-    border: 1px dashed #ccc;
+    /* border: 1px dashed #ccc; */
     height: 100px;
     width: 120px;
 }
 
 .auction > .image-1{
     grid-area: small-image-1;
-    border: 1px dashed #ccc;
+    /* border: 1px dashed #ccc; */
     width: 80px;
 }
 
 .auction > .image-2{
     grid-area:small-image-2;
-    border: 1px dashed #ccc;
+    /* border: 1px dashed #ccc; */
     width: 80px;
 }
 
-.bookmarks{
+/* .bookmarks{
     position: fixed;
     display: block;
     
@@ -163,4 +217,287 @@ background: rgba(200, 200, 200, 0.3);
     right: 0px;
     border: 1px solid black;
     background: #fefefe;
+} */
+
+.text-right{
+    text-align: right;
+}
+
+
+.input-group{
+    width: 90%;
+    left: 60px;
+}
+
+.bookmark-card {
+    margin: 10px 0;
+}
+
+.bookmark-card > .bookmarks > a{
+    text-decoration: none;
+}
+
+/* Register */
+
+.registerBox {
+    width: 550px;
+    min-height: 200px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    left: 25%;
+    position: relative;
+}
+
+.registerBox > form > .inputBoxR{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+
+.registerBox > form > .inputBoxR > input{
+    flex-grow: 1;
+}
+
+
+
+.registerBox input[type="text"],
+.registerBox input[type="email"],
+.registerBox input[type="password"] {
+    border: none;
+    border-bottom: 2px solid #262626;
+    outline: none;
+    height: 40px;
+    color: black;
+    background: transparent;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-left: 20px;
+    box-sizing: border-box
+}
+
+.registerBox input[type="text"]:hover,
+.registerBox input[type="email"]:hover,
+.registerBox input[type="password"]:hover {
+    
+    border: 1px solid #0d6efd;
+    box-shadow: 0 2 2px #0d6efd;
+}
+
+.registerBox input[type="text"]:focus,
+.registerBox input[type="email"]:focus,
+.registerBox input[type="password"]:focus {
+    border-bottom: 2px solid #0d6efd
+}
+
+.registerBox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 200px;
+    margin-left: 180px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background: #0d6efd;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer
+}
+
+.registerBox a {
+    color: #262626;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+
+}
+
+.registerBox span {
+    position: absolute;
+    top: 10px;
+    color: #262626
+}
+/* Login*/
+#particles-js {
+    height: 100%
+}
+
+.loginBox {
+    position: relative;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    min-height: 200px;
+    border-radius: 10px;
+    padding: 40px;
+    box-sizing: border-box
+}
+
+.user {
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px
+}
+
+h3 {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #0d6efd;
+    text-align: center
+}
+
+.loginBox input {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"] {
+    border: none;
+    border-bottom: 2px solid #262626;
+    outline: none;
+    height: 40px;
+    color: black;
+    background: transparent;
+    font-size: 16px;
+    padding-left: 20px;
+    box-sizing: border-box
+}
+
+.loginBox input[type="text"]:hover,
+.loginBox input[type="password"]:hover {
+    
+    border: 1px solid #0d6efd;
+    box-shadow: 0 2 2px #0d6efd;
+}
+
+.loginBox input[type="text"]:focus,
+.loginBox input[type="password"]:focus {
+    border-bottom: 2px solid #0d6efd
+}
+
+.inputBox {
+    position: relative
+}
+
+.inputBox span {
+    position: absolute;
+    top: 10px;
+    color: #262626
+}
+
+.loginBox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+    background: #0d6efd;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer
+}
+
+.loginBox a {
+    color: #262626;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+
+}
+
+a:hover {
+    color: #0d6efd
+}
+
+p {
+    color: #0000ff
+}
+
+.card{
+    align-items: center;
+    flex-direction: row;
+    font-size: 13pt;
+}
+
+.userFetch{
+    margin-right: 5px;
+}
+
+.dashboard{
+    height: 200px;
+    font-size: 17pt;
+    display: flex;
+}
+
+.dashboard > p{
+    position: relative;
+    left: 480px;
+}
+
+.dashboard > a{
+    flex-grow: 1;
+    top: 30%;
+    right: 2%;
+    position: relative;
+    font-size: 15pt;
+    
+}
+
+.options{
+    font-size: 17pt;
+    position: relative;
+    left: 450px;
+}
+
+.listAuctions{
+    height: 300px;
+}
+
+.auctions{
+    font-size: 17pt;
+    position: relative;
+    top: 50px;
+    right: 25px;
+    text-align: center;
+    
+}
+
+.auctions > ul > li {
+    list-style: none;
+    font-size: 15pt;
+}
+
+.btn-primary{
+margin-top: 5px;
+}
+
+.alert-warning {
+    margin-top: 5px;
+}
+
+.categories {
+    justify-content: space-around;
+}
+
+.categories > ul{
+    list-style: none;
+    margin-top: 10px;
+}
+
+
+.category-form > .form-group > .form-control{
+    width: 30%;
+}
+
+.search-box button{
+    margin-top: 0px;
 }
