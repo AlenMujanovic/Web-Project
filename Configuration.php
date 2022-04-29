@@ -24,6 +24,6 @@ final class Configuration
     const MAIL_HOST     = 'smtp.office365.com';
     const MAIL_PORT     = '587';
     const MAIL_PROTOCOL = 'tls';
-    const MAIL_USERNAME = 'emailtestweb2022@gmail.com';
-    const MAIL_PASSWORD = 'WebProjectTest';
+    const MAIL_USERNAME = '';
+    const MAIL_PASSWORD = '';
 }
